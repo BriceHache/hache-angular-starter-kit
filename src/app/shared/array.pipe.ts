@@ -62,6 +62,7 @@ export class PasswordValidation {
         let confirmPassword = AC.get('confirmPassword')!.value; // to get value in input tag
         if (password != confirmPassword) {
             AC.get('confirmPassword')!.setErrors({ MatchPassword: true })
+            return false;
         } else {
             return null
         }

@@ -19,23 +19,48 @@
             "polyfills": [
               "zone.js"
             ],
-            "tsConfig": "tsconfig.app.json",
+            "tsConfig": "tsconfig.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets/images",
+              "src/.htaccess", 
+              "src/Web.config" 
             ],
             "styles": [
-              "src/styles.css"
+              "src/assets/css/font-awesome.min.css",
+              "src/assets/css/flatpickr.css",
+              "src/assets/kendo/kendo.common-material.min.css",
+              "src/assets/kendo/kendo.material.min.css",
+              "src/assets/css/jquery.webui-popover.min.css",
+              "src/assets/css/common.css",
+              "src/assets/css/style.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/js/jquery.min.js",
+              "src/assets/js/FileSaver.min.js",
+              "src/assets/js/base64js.min.js",
+              "src/assets/js/bootstrap-dropdown.min.js",
+              "src/assets/kendo/kendo.all.min.js",
+              "src/assets/js/jquery.webui-popover.min.js"
+            ]
           },
           "configurations": {
             "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "sourceMap": false,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": false,
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "8mb",
+                  "maximumError": "8mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -43,7 +68,7 @@
                   "maximumError": "4kb"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "bundles"
             },
             "development": {
               "optimization": false,
@@ -78,7 +103,7 @@
               "zone.js",
               "zone.js/testing"
             ],
-            "tsConfig": "tsconfig.spec.json",
+            "tsConfig": "tsconfig.json",
             "assets": [
               "src/favicon.ico",
               "src/assets"

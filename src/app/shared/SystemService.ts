@@ -58,7 +58,7 @@ export class SystemService {
         this.Account = <Account_Model>{};
         this.App = new AppHelper(this);
         this.Data = new DataHelper(http, this.App, this);
-        Translator.init().then(() => { this.CL = "en"; });
+        Translator.init().then(() => { this.CL = "fr"; });
         this.loadAccountDetail();
     }
 
@@ -158,7 +158,7 @@ export class SystemService {
     async Get_Languages() {
         let lst: any = [
             { Key: 'English', Value: 'EN' },
-            { Key: 'French',  Value:  'FR' },
+            { Key: 'Français',  Value:  'FR' },
         ];
         return lst;
     }

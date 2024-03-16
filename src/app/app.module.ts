@@ -30,6 +30,9 @@ import { DashboardComponent } from './dashboard/dashboard';
 import { LoginComponent } from './login/login.component';
 import { Reset_PasswordComponent } from './login/reset_password';
 import { PageNotFoundComponent } from './not-found.component';
+import { TranslateService } from './shared/Translate/translate.service';
+import { TRANSLATION_PROVIDERS } from './shared/Translate/translations';
+
 
 
 @NgModule({
@@ -38,7 +41,7 @@ import { PageNotFoundComponent } from './not-found.component';
         Reset_PasswordComponent, PageNotFoundComponent
         //,Requester_ProfileComponent
     ],
-    providers: [{ provide: LocationStrategy, useClass: PathLocationStrategy }, AuthGuard, SystemService // without # url comes which is support html5 browser
+    providers: [{ provide: LocationStrategy, useClass: PathLocationStrategy }, AuthGuard, SystemService,TranslateService, TRANSLATION_PROVIDERS // without # url comes which is support html5 browser
     ],
     bootstrap: [AppComponent],
     imports: [BrowserModule,

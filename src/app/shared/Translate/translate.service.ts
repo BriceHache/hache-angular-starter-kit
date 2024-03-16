@@ -7,7 +7,7 @@ import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class TranslateService {
-    public _currentLang: string = 'FR';
+    public _currentLang: string = 'EN';
     public _test: any = {};
     public defered = new Deferred<boolean>();
    // public changeDetector: ChangeDetectorRef ;
