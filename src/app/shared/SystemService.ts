@@ -82,17 +82,31 @@ export class SystemService {
         if (this.App.getCookie("Bearer")) {
             try {
                 let data = await this.Data.ExecuteAPI_Post<Account_Model>("Admin/Get_Account_Detail");
-
+                console.log(data);
                 let isagent = this.Account.Is_Agent;//for remember agent is in agent portal or client portal, so get old value                    
                 this.Account = new Account_Model(data);
-                if (isagent != undefined && isagent != null) { this.Account.Is_Agent = isagent };//for remember agent is in agent portal or client portal, so get old value                   
-                this.Account.Is_Show_ClientPortal_Link = this.Account.Is_Agent;
+                console.log("Is Agent : " + isagent);
+                console.log(this.Account);
+                if (isagent != undefined && isagent != null) 
+                { 
+                    this.Account.Is_Agent = isagent
+                 };//for remember agent is in agent portal or client portal, so get old value                   
+               // this.Account.Is_Show_ClientPortal_Link = this.Account.Is_Agent;
 
-                if (this.Account.UserID > 0) { this._dataPromise.resolve(true); }
-                else { this._dataPromise.resolve(false); this.redirectToLogin(); }
+                if (this.Account.UserID > 0) { 
+                    console.log("User Account ID is greater than 0");
+                    this._dataPromise.resolve(true);
+                 }
+                else { 
+                    console.log("User Account ID is not greater than 0");
+                    this._dataPromise.resolve(false);
+                     this.redirectToLogin(); 
+                }
 
-            } catch (e) {
-                this._dataPromise.resolve(false); this.redirectToLogin();
+            } catch (e: any) {
+                console.log("Exception : " + e.message);
+                this._dataPromise.resolve(false); 
+                this.redirectToLogin();
             }
         } else {
             this._dataPromise.resolve(false);
@@ -102,6 +116,7 @@ export class SystemService {
     }
 
     redirectToLogin(returnUrl?: string) {
+        console.log("Inside redirect to login");
         this.Account = <Account_Model>{ UserID: 0, UserName: "" };
         if (returnUrl && returnUrl != '/')
             this.router.navigate(['login'], { queryParams: { returnUrl: returnUrl }, replaceUrl: true });

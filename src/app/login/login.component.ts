@@ -90,7 +90,8 @@ export class LoginComponent {
 
             let obj = this.LoginForm.getRawValue();
             let res = await this.service.Data.ExecuteAPI_Post<any>("Login/Login", obj);
-            if (res.isSuccess) {                
+            if (res.isSuccess) {     
+                console.log(res);           
                 let expiration_date = new Date();
                 expiration_date.setSeconds(expiration_date.getSeconds() + this.sessionExpirationSeconds);
                 this.service.App.setCookie("Bearer", res.data, expiration_date);
@@ -100,8 +101,16 @@ export class LoginComponent {
                 this.service.Data.ExecuteAPI_Post<any>("Admin/Set_Current_Languages", { lang: this.SelectedLang.Value }).then((res) => { });
 
                 if (this.service.Account.Is_Agent) {
-                    if (this.service.Account.Is_Ticket_StartPage) { this.router.navigate(['/ticket']); }
+                    console.log("Profile : " + "Is Agent");
+                    
+                   // if (this.service.Account.Is_Ticket_StartPage) { this.router.navigate(['/ticket']); }
+                    if (this.service.Account.Is_Ticket_StartPage) {
+                        
+                        console.log("Ticket  : " + "Is TIcket start page");
+                        this.router.navigate(['']);
+                     }
                     else {
+                        console.log("Ticket  : " + "Is not TIcket start page");
                         if (this.returnUrl && this.returnUrl != '' && this.returnUrl != '/') {
                             this.router.navigate([this.returnUrl]);
                         }
@@ -109,13 +118,32 @@ export class LoginComponent {
                     }
                 }
                 else {
-                    if (this.service.Account.Is_Ticket_StartPage) { this.router.navigate(['/requester/ticket']); }
+                    console.log("Profile : " + "Is Not Agent");
+                    console.log(this.service.Account);
+
+
+                    if (this.service.Account.Is_Ticket_StartPage) { 
+                        console.log("Ticket  : " + "Is Ticket start page");
+                        //this.router.navigate(['/requester/ticket']); 
+                        this.router.navigate(['']); 
+                    }
                     else {
+                        console.log("Ticket  : " + "Is Ticket is not start page");
                         //redirect to requester dashboard page
                         if (this.returnUrl && this.returnUrl != '' && this.returnUrl != '/') {
-                            this.router.navigate([this.returnUrl]);
+
+                            console.log("Ticket  : " + "returnUrl is not empty");
+
+                            this.router.navigate(['/requester']);
+                         
+                           // this.router.navigate([this.returnUrl]);
                         }
-                        else { this.router.navigate(['/requester']); }
+                        else { 
+                            console.log("Ticket  : " + "returnUrl is empty");
+                           // this.router.navigate(['/requester']);
+                           // this.router.navigate(['/requester']);
+                           this.router.navigate(['/requester']);
+                         }
                     }
                 }
             }

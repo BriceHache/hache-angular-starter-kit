@@ -12,14 +12,14 @@ import { SystemService } from './shared/SystemService';
                 <h1 class="display-1 mb-0">404</h1>
               </div>
               <div class="col-lg-6 error-page-divider text-lg-left pl-lg-4">
-                <h2>SORRY!</h2>
-                <h3 class="font-weight-light">The page you’re looking for was not found.</h3>
+                <h2>DESOLÉ!</h2>
+                <h3 class="font-weight-light">La page que vous recherchez n'a pas été trouvée.</h3>
               </div>
             </div>
             <div class="row mt-5">
               <div class="col-12 text-center mt-xl-2">
-                <a *ngIf="service?.Account?.Is_Agent" class="font-weight-medium" routerLink="/">Back to home</a>
-                <a *ngIf="!service?.Account?.Is_Agent" class="font-weight-medium" routerLink="/requester">Back to home</a>
+                <a *ngIf="service?.Account?.Is_Agent" class="font-weight-medium" routerLink="/">Retour à l'accueil</a>
+                <a *ngIf="!service?.Account?.Is_Agent" class="font-weight-medium" routerLink="/requester">Retour à l'accueil</a>
               </div>
             </div>            
           </div>

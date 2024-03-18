@@ -28,11 +28,16 @@ import { Change_PasswordComponent } from '../admin_setting/user/change_password'
 //import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { AlertComponent } from './alert';
 //import { NgChartsModule } from 'ng2-charts';
+
+
 import { Ng2FlatpickrModule } from 'ng2-flatpickr';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 
 import { TooltipModule } from '@amin-karimi/ng2-tooltip-directive';
 import { TooltipOptions } from '@amin-karimi/ng2-tooltip-directive';
+import { Requester_DashboardComponent } from '../requester/dashboard/requester_dashboard';
+import { NgChartsModule } from 'ng2-charts';
+
 
 export const MyDefaultTooltipOptions: TooltipOptions = {
     'show-delay': 300,
@@ -43,12 +48,15 @@ export const MyDefaultTooltipOptions: TooltipOptions = {
 
 @NgModule({
     imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule, ColorPickerModule
-      //,ChartsModule 
+        
+      ,NgChartsModule
        //,Ng2FlatpickrModule 
         ,TypeaheadModule.forRoot(), TooltipModule.forRoot(MyDefaultTooltipOptions as TooltipOptions)],
-    declarations: [TranslatePipe, AlertComponent, ModalDialog, FilterArrayPipe, FilterArrayObjectPipe, SumPipe, SafeHtmlPipe, fileTypePipe, NumberOnly, FocusInvalidDirective, commongrid_Component,
+    declarations: [TranslatePipe, AlertComponent, ModalDialog, FilterArrayPipe, FilterArrayObjectPipe, SumPipe, SafeHtmlPipe, 
+        fileTypePipe, NumberOnly, FocusInvalidDirective, commongrid_Component,
         // ticket_commongrid_Component,
        // User_Technician_ListComponent, 
+       
         Change_PasswordComponent
         //, Announcement_ViewComponent
         //, Row_ViewComponent
@@ -56,7 +64,8 @@ export const MyDefaultTooltipOptions: TooltipOptions = {
     ],
     exports: [FormsModule, ReactiveFormsModule, TranslatePipe, AlertComponent, ModalDialog, FilterArrayPipe, FilterArrayObjectPipe, SumPipe, SafeHtmlPipe, fileTypePipe,
         ColorPickerModule
-       // , ChartsModule
+        ,NgChartsModule
+        //, NgChartsModule
          //,Ng2FlatpickrModule
          , TypeaheadModule, TooltipModule,
         NumberOnly, FocusInvalidDirective, commongrid_Component

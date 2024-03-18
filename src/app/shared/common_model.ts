@@ -26,16 +26,16 @@ export class Account_Model {
     CompanyTitle!: string;
     DefaultLanguage!: string;
     DefaultPassword!: string;
-    Is_EasyAddOn_Visible!: boolean;
-    Is_Chat_Visible!: boolean;
+   // Is_EasyAddOn_Visible!: boolean;
+   // Is_Chat_Visible!: boolean;
     Is_Admin_Search!: boolean;
-    Is_Pickup!: boolean;
-    Is_AssignTo_Dropdown!: boolean;
-    Is_Close_Ticket!: boolean;
-    Is_Ticket_StartPage!: boolean;
+   // Is_Pickup!: boolean;
+   // Is_AssignTo_Dropdown!: boolean;
+    //Is_Close_Ticket!: boolean;
+   // Is_Ticket_StartPage!: boolean;
     Is_EditRow_On_DoubleClick!: boolean;
 
-    Is_Profile_Visible!: boolean;
+  /*  Is_Profile_Visible!: boolean;
     Is_Profile_Visible_Client!: boolean;
     Is_CommonSetting_Visible!: boolean;
     Is_CommonSetting_Visible_Client!: boolean;
@@ -66,10 +66,10 @@ export class Account_Model {
     Is_Clone_Ticket!: boolean;
     Is_Clone_Ticket_Client!: boolean;
     Is_Clone_Solution!: boolean;
-    Is_Clone_Solution_Client!: boolean;
+    Is_Clone_Solution_Client!: boolean; */
 
     //Ticket
-    Show_Ticket_Menu!: boolean;
+  /*  Show_Ticket_Menu!: boolean;
     Is_Full_Ticket!: boolean;
     Is_View_Ticket!: boolean;
     Is_Add_Ticket!: boolean;
@@ -81,18 +81,18 @@ export class Account_Model {
     Is_View_Ticket_Client!: boolean;
     Is_Add_Ticket_Client!: boolean;
     Is_Edit_Ticket_Client!: boolean;
-    Is_Delete_Ticket_Client!: boolean;
+    Is_Delete_Ticket_Client!: boolean; */
 
     //Summary
-    Show_Summary_Menu!: boolean;
+    /*Show_Summary_Menu!: boolean;
     Is_Full_Summary!: boolean;
     Is_View_Summary!: boolean;
     Is_Add_Summary!: boolean;
     Is_Edit_Summary!: boolean;
-    Is_Delete_Summary!: boolean;
+    Is_Delete_Summary!: boolean; */
 
     //Solution
-    Show_Solution_Menu!: boolean;
+   /* Show_Solution_Menu!: boolean;
     Is_Full_Solution!: boolean;
     Is_View_Solution!: boolean;
     Is_Add_Solution!: boolean;
@@ -104,7 +104,7 @@ export class Account_Model {
     Is_View_Solution_Client!: boolean;
     Is_Add_Solution_Client!: boolean;
     Is_Edit_Solution_Client!: boolean;
-    Is_Delete_Solution_Client!: boolean;
+    Is_Delete_Solution_Client!: boolean; */
 
     //Admin
     Show_Admin_Menu!: boolean;
@@ -118,36 +118,64 @@ export class Account_Model {
     Show_Admin_Dashboard!: boolean;
 
     //extra
-    Is_Show_ClientPortal_Link!: boolean; //this will use for show client's pages or agent's pages
+ //   Is_Show_ClientPortal_Link!: boolean; //this will use for show client's pages or agent's pages
 
     Is_DemoVersion!: boolean;
     Is_Enable_SignalR!: boolean;
 
-    //Page_Permission: Page_Permission;
+   // Page_Permission: Page_Permission;
     public init() {
-        this.Show_Ticket_Menu = this.Is_Full_Ticket || this.Is_View_Ticket || this.Is_Add_Ticket || this.Is_Edit_Ticket || this.Is_Delete_Ticket;
+       /* this.Show_Ticket_Menu = this.Is_Full_Ticket || this.Is_View_Ticket || this.Is_Add_Ticket || this.Is_Edit_Ticket || this.Is_Delete_Ticket;
         this.Show_Ticket_Menu_Client = this.Is_Full_Ticket_Client || this.Is_View_Ticket_Client || this.Is_Add_Ticket_Client || this.Is_Edit_Ticket_Client || this.Is_Delete_Ticket_Client;
         this.Show_Summary_Menu = this.Is_Full_Summary || this.Is_View_Summary || this.Is_Add_Summary || this.Is_Edit_Summary || this.Is_Delete_Summary;
         this.Show_Solution_Menu = this.Is_Full_Solution || this.Is_View_Solution || this.Is_Add_Solution || this.Is_Edit_Solution || this.Is_Delete_Solution;
-        this.Show_Solution_Menu_Client = this.Is_Full_Solution_Client || this.Is_View_Solution_Client || this.Is_Add_Solution_Client || this.Is_Edit_Solution_Client || this.Is_Delete_Solution_Client;
+        this.Show_Solution_Menu_Client = this.Is_Full_Solution_Client || this.Is_View_Solution_Client || this.Is_Add_Solution_Client || this.Is_Edit_Solution_Client || this.Is_Delete_Solution_Client;*/
         this.Show_Admin_Menu = this.Is_Full_Admin || this.Is_View_Admin || this.Is_Add_Admin || this.Is_Edit_Admin || this.Is_Delete_Admin;
 
 
         if (this.Is_Agent_Original) { this.Show_Admin_Dashboard = true; } else { this.Show_Admin_Dashboard = false; }
     }
     constructor(item: Account_Model) {
-        Object.keys(item).forEach((d) => {
-           // this[d] = item[d];
-        });
+        
+          this.CompanyLogo = item.CompanyLogo;
+          this.UserID = item.UserID;
+          this.DisplayName = item.DisplayName;
+          this.UserName = item.UserName;
+          this.Email = item.Email;
+          this.ProfilePicture = item.ProfilePicture;
+          this.Is_Agent_Original = item.Is_Agent_Original;
+          this.Is_Agent = item.Is_Agent;
+          this.Is_Client = item.Is_Client;
+          this.CompanyLogo = item.CompanyLogo;
+          this.CompanyTitle = item.CompanyTitle;
+          this.DefaultLanguage = item.DefaultLanguage;
+          this.DefaultPassword = item.DefaultPassword;
+          this.Is_Admin_Search = item.Is_Admin_Search;
+          this.Is_EditRow_On_DoubleClick = item.Is_EditRow_On_DoubleClick;
+          this.Is_Full_Admin = item.Is_Full_Admin;
+          this.Is_View_Admin = item.Is_View_Admin;
+          this.Is_Add_Admin = item.Is_Add_Admin;
+          this.Is_Edit_Admin = item.Is_Edit_Admin;
+          this.Is_Delete_Admin = item.Is_Delete_Admin;
+          this.Show_Admin_Dashboard = item.Show_Admin_Dashboard;
+          this.Is_DemoVersion = item.Is_DemoVersion;
+          this.Is_Enable_SignalR = item.Is_Enable_SignalR;
+
+
+        /*Object.keys(item).forEach((d) => {
+            this[d as keyof Account_Model] = item[d as keyof Account_Model];
+        });*/
+
         this.init();
-        //this.Page_Permission = new Page_Permission(item.Page_Permission);
+       // this.Page_Permission = new Page_Permission(item.Page_Permission);
     }
 }
 
 class Page_Permission {
     constructor(item: Page_Permission) {
+        
         Object.keys(item).forEach((d) => {
-           // this[d] = item[d];
+            this[d as keyof Page_Permission]  = item[d as  keyof Page_Permission];
         });
         this.init();
     }

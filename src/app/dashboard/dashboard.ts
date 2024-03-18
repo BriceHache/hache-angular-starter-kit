@@ -11,13 +11,16 @@ import 'chart.piecelabel.js';
     templateUrl: './dashboard.html'
 })
 
+
 export class DashboardComponent {
-    isLoading = false; isLoading_announcement = false;
+    isLoading = false;
+     isLoading_announcement = false;
     sub: any; sub1: any;
     model!: Dashboard_Summary_Model;
     pieChartData: any;
     public AnnouncementList: Array<any> = [];
     constructor(public service: SystemService, public router: Router) {
+      
         this.service.GoTo_ScrollTop(window);
         this.service.HasAccountData.then(() => {
             if (!this.service.Account.Is_Agent) {
@@ -25,6 +28,7 @@ export class DashboardComponent {
             }
         });
     }
+
     ngOnInit() {
         this.bindData();
         this.sub = this.service.Data.registerReceiver<any>('Get_Notification_Refresh').subscribe((res) => {
@@ -43,8 +47,13 @@ export class DashboardComponent {
         try {
             this.isLoading = true;
 
+            console.log("Inside Dashboard :" + "I am here");
+            
             this.model = await this.service.Data.ExecuteAPI_Post<any>("Dashboard/Get_Dashboard_Summary", 
-            { Is_Agent: this.service.Account.Is_Agent, Is_Client: this.service.Account.Is_Client });
+            { 
+                Is_Agent: this.service.Account.Is_Agent,
+                Is_Client: this.service.Account.Is_Client
+            });
             
             this.isLoading = false;
             if (this.model.AllTickets > 0) {

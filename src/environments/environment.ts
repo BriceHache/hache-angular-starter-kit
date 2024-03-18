@@ -4,7 +4,8 @@
 
 export const environment = {
     production: false,
-    Base_API_URL: 'https://localhost:44332',
+    Base_API_URL: 'http://localhost:5248',
+   // Base_API_URL: 'https://localhost:44332',
     Site_URL: 'http://localhost:4200',
     Expiration_Time: 60
 };
