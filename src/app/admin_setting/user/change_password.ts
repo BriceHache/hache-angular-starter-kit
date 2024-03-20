@@ -58,7 +58,7 @@ export class Change_PasswordComponent {
                 this.isLoading = false;
             }
             else {
-                this.service.showMessage(AlertType.Error, "This features is not enable for demo version.");
+                this.service.showMessage(AlertType.Error, "Cette fonctionnalité n'est pas activée dans la version demo.");
             }
         } catch (e) {
             this.isLoading = false;
