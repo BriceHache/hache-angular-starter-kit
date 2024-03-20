@@ -179,12 +179,13 @@
                     </div>
                     <div class="card-body">                        
                         <div class="overflow_chart" *ngIf="model?.AllTickets > 0">
-                            <!-- <canvas baseChart #OverviewChart="base-chart" height="310"
-                                    [datasets]="OverviewChartData"
-                                    [labels]="OverviewChartLabels"
-                                    [options]="OverviewChartOptions"
-                                    [chartType]="'doughnut'"
-                                    [colors]="chart_colors"></canvas> -->
+                            <canvas baseChart #OverviewChart="base-chart" height="310"
+                            [datasets]="OverviewChartData"
+                            [labels]="OverviewChartLabels"
+                            [options]="OverviewChartOptions"
+                            [type]="'doughnut'"
+                            [colorPicker]="chart_colors">
+                        </canvas>
                         </div>
                         <div class="nodata" *ngIf="!isLoading && model?.AllTickets == 0">
                             <span>{{'lblNoData'| translate:service.CL}}</span>

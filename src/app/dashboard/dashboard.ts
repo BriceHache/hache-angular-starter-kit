@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { SystemService } from '../shared/SystemService';
 import { Dashboard_Summary_Model } from '../shared/common_model';
 import { BaseChartDirective } from 'ng2-charts';
-import 'chart.piecelabel.js';
+
 
 @Component({
     moduleId: module.id,
@@ -31,9 +31,9 @@ export class DashboardComponent {
 
     ngOnInit() {
         this.bindData();
-        this.sub = this.service.Data.registerReceiver<any>('Get_Notification_Refresh').subscribe((res) => {
+       /* this.sub = this.service.Data.registerReceiver<any>('Get_Notification_Refresh').subscribe((res) => {
             this.bindNotification();
-        });
+        });*/
         this.sub1 = this.service.Data.registerReceiver<any>('Get_Language_Refresh').subscribe((res) => {
             this.bindSummaryChart();
         });
@@ -49,11 +49,43 @@ export class DashboardComponent {
 
             console.log("Inside Dashboard :" + "I am here");
             
-            this.model = await this.service.Data.ExecuteAPI_Post<any>("Dashboard/Get_Dashboard_Summary", 
+           /* this.model = await this.service.Data.ExecuteAPI_Post<any>("Dashboard/Get_Dashboard_Summary", 
             { 
                 Is_Agent: this.service.Account.Is_Agent,
                 Is_Client: this.service.Account.Is_Client
-            });
+            });*/
+
+            this.model =  {
+
+                AllTickets : 71,
+              OpenTickets : 56,
+               ClosedTickets : 15,
+               PendingTickets : 55,
+               UnAssignedTickets : 1,
+                OverdueTickets : 9,
+                DueTodayTickets : 0,
+                AssignedToMeTickets : 62,
+                AllTickets_percent : 100,
+               OpenTickets_percent : 0,
+               ClosedTickets_percent : 0,
+                PendingTickets_percent : 0,
+                UnAssignedTickets_percent : 0,
+                OverdueTickets_percent : 0,
+             DueTodayTickets_percent : 0,
+               AssignedToMeTickets_percent : 0
+    
+            };
+
+           /* this.model.AllTickets = 71;
+            this.model.OpenTickets = 56;
+            this.model.ClosedTickets = 15;
+            this.model.PendingTickets = 55;
+            this.model.UnAssignedTickets = 1;
+            this.model.OverdueTickets = 9;
+            this.model.DueTodayTickets = 0;
+            this.model.AssignedToMeTickets = 62; */
+
+            console.log("Tickets : " +  this.model.AllTickets );
             
             this.isLoading = false;
             if (this.model.AllTickets > 0) {
@@ -74,7 +106,7 @@ export class DashboardComponent {
                 this.model.DueTodayTickets_percent = 0; this.model.AssignedToMeTickets_percent = 0;
             }
 
-            this.bindNotification();
+           // this.bindNotification();
 
         } catch (e) { this.isLoading = false; }
     }
@@ -116,8 +148,8 @@ export class DashboardComponent {
     }
 
     //Bind Notification
-    async bindNotification() {
+   /* async bindNotification() {
         this.AnnouncementList = await this.service.Data.ExecuteAPI_Post<any>("Admin/Get_AnnouncementList_Client", { Is_Agent: this.service.Account.Is_Agent, Is_Client: true });
-    }
+    }*/
 
 }

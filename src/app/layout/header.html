@@ -50,8 +50,8 @@
 
 
 
-        <!-- <ul class="navbar-nav navbar-nav-right">
-            <li class="nav-item dropdown">
+         <ul class="navbar-nav navbar-nav-right">
+            <!-- <li class="nav-item dropdown">
                 <a class="nav-link count-indicator dropdown-toggle m-0" id="notificationDropdown" href="#" data-toggle="dropdown">
                     <i class="fa fa-bullhorn"></i>
                     <span class="count">{{AnnouncementList?.length}}</span>
@@ -76,7 +76,7 @@
                     </ng-container>
 
                 </div>
-            </li>
+            </li> -->
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle m-0" id="langDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
                     <img src="../../assets/images/flag/{{selectedLang ? selectedLang : 'FR'}}.png" class="mr-1"/>
@@ -114,7 +114,7 @@
                     <a class="dropdown-item cursor" (click)="service?.logOut();"><i class="fa fa-sign-out-alt"></i> {{'lblLogout'| translate:service.CL}}</a>
                 </div>
             </li>
-        </ul> -->
+        </ul> 
         <button type="button" class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" style="position:fixed;right:0;" data-toggle="offcanvas" (click)="service?.ShowHide_LeftMenu();">
             <span class="fa fa-bars"></span>
         </button>

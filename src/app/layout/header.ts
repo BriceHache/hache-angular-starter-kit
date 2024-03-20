@@ -32,9 +32,9 @@ export class HeaderComponent {
                 }
             }
         });
-        this.service.Data.registerReceiver<any>('Get_Notification_Refresh').subscribe((res) => {
+        /*this.service.Data.registerReceiver<any>('Get_Notification_Refresh').subscribe((res) => {
             this.bindData();
-        });
+        });*/
         this.service.Data.registerReceiver<any>('Get_Language_Refresh').subscribe((res) => {
             if (res.UserID == this.service.Account.UserID) {
                 this.changeLanguage(res.keyval, false);
@@ -58,7 +58,7 @@ export class HeaderComponent {
         if (this.service.Account.CompanyLogo) { this.logoUrl = this.service.Settings.Base_API_URL + "/Documents/Attachments/" + this.service.Account.CompanyLogo + "?" + cdt; }
         if (this.service.Account.ProfilePicture) { this.ProfilePicture = this.service.Settings.Base_API_URL + "/Documents/Profile/" + this.service.Account.ProfilePicture + "?" + cdt; }
 
-        this.AnnouncementList = await this.service.Data.ExecuteAPI_Post<Array<any>>("Admin/Get_AnnouncementList_Client", { Is_Agent: this.service.Account.Is_Agent, Is_Client: true });
+      //  this.AnnouncementList = await this.service.Data.ExecuteAPI_Post<Array<any>>("Admin/Get_AnnouncementList_Client", { Is_Agent: this.service.Account.Is_Agent, Is_Client: true });
     }
     async get_language_list() {
         this.LanguageList = await this.service.Get_Languages();

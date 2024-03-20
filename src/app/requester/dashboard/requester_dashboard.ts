@@ -10,7 +10,7 @@ import { BaseChartDirective } from 'ng2-charts';
 })
 
 export class Requester_DashboardComponent {
-    isLoading = false; isLoading_chart = false; model: Dashboard_Summary_Model = {} as Dashboard_Summary_Model ;
+    isLoading = false; isLoading_chart = false; model!: Dashboard_Summary_Model ;
     sub: any; sub1: any;
     pieChartData: any;
     AnnouncementList: Array<any> = [];
@@ -19,9 +19,9 @@ export class Requester_DashboardComponent {
     }
     ngOnInit() {
         this.bindData();
-        this.sub = this.service.Data.registerReceiver<any>('Get_Notification_Refresh').subscribe((res) => {
+       /* this.sub = this.service.Data.registerReceiver<any>('Get_Notification_Refresh').subscribe((res) => {
             this.bindNotification();
-        });
+        });*/
         this.sub1 = this.service.Data.registerReceiver<any>('Get_Language_Refresh').subscribe((res) => {
             this.bindSummaryChart();
         });
@@ -34,7 +34,7 @@ export class Requester_DashboardComponent {
         try {
             this.isLoading = true;
 
-            let account = this.service.Account;
+            //let account = this.service.Account;
 
             // Replace API data Fetching  process
            // this.model = {} as Dashboard_Summary_Model ;
@@ -49,6 +49,8 @@ export class Requester_DashboardComponent {
             
            // await this.service.Data.ExecuteAPI_Post<Dashboard_Summary_Model>("Dashboard/Get_Dashboard_Summary", 
           //  { Is_Agent: account.Is_Agent, Is_Client: account.Is_Client });
+
+          console.log(this.model);
 
             if (this.model) {
                 if (this.model.AllTickets > 0) {
@@ -67,7 +69,7 @@ export class Requester_DashboardComponent {
                 }
             }
 
-            this.bindNotification();
+            //this.bindNotification();
 
             this.isLoading = false;
         } catch (e) {
@@ -130,8 +132,8 @@ export class Requester_DashboardComponent {
     }
 
     //Bind Notification
-    async bindNotification() {
+   /* async bindNotification() {
         this.AnnouncementList = await this.service.Data.ExecuteAPI_Post<Array<any>>("Admin/Get_AnnouncementList_Client", { Is_Agent: this.service.Account.Is_Agent, Is_Client: true });
-    }
+    }*/
 }
 
